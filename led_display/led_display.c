@@ -5,6 +5,40 @@
 
 int display_red[8],display_green[8];
 
+int putpixel(int x, int y, int color) {
+
+	int offset;
+
+	offset=1<<(7-x);
+
+	display_red[y]&=~offset;
+	display_green[y]&=~offset;
+
+	if ((color==RED) || (color==YELLOW)) {
+		display_red[y]|=offset;
+	}
+
+	if ((color==GREEN) || (color==YELLOW)) {
+		display_green[y]|=offset;
+	}
+
+	return 0;
+}
+
+/* Graphics Routines */
+int hline(int x1, int x2, int y, int color) {
+
+	int x;
+
+	for(x=x1;x<=x2;x++) {
+		putpixel(x,y,color);
+	}
+
+	return 0;
+
+}
+
+
 static int init_display(void) {
 	int i;
 
