@@ -3,7 +3,21 @@
 #include "demo_names.h"
 #include "led_display.h"
 
-int display_red[8],display_green[8];
+static int display_red[8],display_green[8];
+
+int green_on(int x, int y) {
+	int offset;
+	offset=1<<(7-x);
+	display_green[y]|=offset;
+	return 0;
+}
+
+int red_on(int x, int y) {
+	int offset;
+	offset=1<<(7-x);
+	display_red[y]|=offset;
+	return 0;
+}
 
 int putpixel(int x, int y, int color) {
 
@@ -94,7 +108,8 @@ int main(int argc, char **argv) {
 
 	/* Open network socket to listen for commands */
 
-	stripes_demo(0);
+//	stripes_demo(0);
+	sine_demo();
 
 	return 0;
 }
