@@ -39,12 +39,13 @@ int hline(int x1, int x2, int y, int color) {
 }
 
 
-static int init_display(void) {
-	int i;
+int clear_display(int color) {
 
-	for(i=0;i<8;i++) display_red[i]=0;
-	for(i=0;i<8;i++) display_green[i]=0;
+	int y;
 
+	for(y=0;y<8;y++) {
+		hline(0,7,y,color);
+	}
 	return 0;
 }
 
@@ -87,7 +88,7 @@ int sync_display(void) {
 int main(int argc, char **argv) {
 
 	/* Clear Display */
-	init_display();
+	clear_display(BLACK);
 
 	/* Open i2c port */
 
