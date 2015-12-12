@@ -1,8 +1,11 @@
 #include <stdio.h>
 
-static int display_red[8],display_green[8];
+#include "demo_names.h"
+#include "led_display.h"
 
-int init_display(void) {
+int display_red[8],display_green[8];
+
+static int init_display(void) {
 	int i;
 
 	for(i=0;i<8;i++) display_red[i]=0;
@@ -47,34 +50,6 @@ int sync_display(void) {
 	return 0;
 }
 
-int visual_stripes(int offset) {
-
-	int i;
-
-	for(i=0;i<8;i++) {
-		switch(i&3) {
-			case 0:
-				display_red[i]=0;
-				display_green[i]=0;
-				break;
-			case 1:
-				display_red[i]=0xff;
-				display_green[i]=0;
-				break;
-			case 2:
-				display_red[i]=0;
-				display_green[i]=0xff;
-				break;
-			case 3:
-				display_red[i]=0xff;
-				display_green[i]=0xff;
-				break;
-		}
-	}
-
-	return 0;
-}
-
 int main(int argc, char **argv) {
 
 	/* Clear Display */
@@ -84,9 +59,7 @@ int main(int argc, char **argv) {
 
 	/* Open network socket to listen for commands */
 
-	visual_stripes(0);
-
-	sync_display();
+	stripes_demo(0);
 
 	return 0;
 }
