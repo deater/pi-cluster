@@ -13,15 +13,20 @@ send_command.o:	send_command.c
 
 
 led_display:	led_display.o \
+		cpu_demo.o \
 		sine_demo.o \
 		stripes_demo.o
 	$(CC) $(LFLAGS) -o led_display led_display.o \
+		cpu_demo.o \
 		sine_demo.o \
 		stripes_demo.o
 
 led_display.o:	led_display.c
 	$(CC) $(CFLAGS) -c led_display.c
 
+
+cpu_demo.o:	cpu_demo.c
+	$(CC) $(CFLAGS) -c cpu_demo.c
 
 sine_demo.o:	sine_demo.c
 	$(CC) $(CFLAGS) -c sine_demo.c
