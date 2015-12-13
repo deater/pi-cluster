@@ -2,6 +2,7 @@ int sync_display(void);
 int red_on(int x,int y);
 int green_on(int x, int y);
 int hline(int x1,int x2,int y,int color);
+int vline(int y1,int y2,int x,int color);
 int putpixel(int x, int y, int color);
 int clear_display(int color);
 

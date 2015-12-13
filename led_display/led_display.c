@@ -52,6 +52,17 @@ int hline(int x1, int x2, int y, int color) {
 
 }
 
+int vline(int y1, int y2, int x, int color) {
+
+	int y;
+
+	for(y=y1;y<=y2;y++) {
+		putpixel(x,y,color);
+	}
+
+	return 0;
+
+}
 
 int clear_display(int color) {
 
@@ -109,7 +120,8 @@ int main(int argc, char **argv) {
 	/* Open network socket to listen for commands */
 
 //	stripes_demo(0);
-	sine_demo();
+//	sine_demo();
+	cpu_demo();
 
 	return 0;
 }
